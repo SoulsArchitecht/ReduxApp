@@ -1,4 +1,5 @@
-const initState = {value: 0}
+//const initState = {value: 0}
+const initState = {value: 0, foo: ' bar'}
 
 const reducer = (state = initState, action) => {
     switch (action.type) {

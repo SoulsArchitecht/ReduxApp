@@ -1,7 +1,7 @@
-import Counter from "./Counter";
+import CounterClass from "./CounterClass";
 
 const App = () => {
-    return <Counter/>
+    return <CounterClass/>
 }
 
 export default App;
