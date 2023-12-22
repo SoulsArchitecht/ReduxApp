@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {createStore, bindActionCreators} from 'redux';
+import {createStore} from 'redux';
 import './index.css';
 import reducer from './reducer'
-//import {inc, dec, rnd} from './actions'
-import * as actions from './actions';
+import {inc, dec, rnd} from './actions'
 
 
 const store = createStore(reducer);
@@ -18,21 +17,17 @@ const update = () => {
 
 subscribe(update);
 
-// const bindActionCreator = (creator, dispatch) => (...args) => {
-//   dispatch(creator(...args))
-// }
+const bindActionCreator = (creator, dispatch) => (...args) => {
+  dispatch(creator(...args))
+}
 
-// const incDispatch = bindActionCreators(inc, dispatch);
-// const decDispatch = bindActionCreators(dec, dispatch);
-// const rndDispatch = bindActionCreators(rnd, dispatch);
+// const incDispatch = () => dispatch(inc());
+// const decDispatch = () => dispatch(dec());
+// const rndDispatch = (value) => dispatch(rnd(value));
 
-// const {incDispatch, decDispatch, rndDispatch} = bindActionCreators({
-//     incDispatch: inc,
-//     decDispatch: dec,
-//     rndDispatch: rnd
-// }, dispatch)
-
-const {incDispatch, decDispatch, rndDispatch} = bindActionCreators(actions, dispatch);
+const incDispatch = bindActionCreator(inc, dispatch);
+const decDispatch = bindActionCreator(dec, dispatch);
+const rndDispatch = bindActionCreator(rnd, dispatch);
 
 document.getElementById('inc').addEventListener('click', incDispatch)
 
@@ -50,3 +45,5 @@ root.render(
     </>
   </React.StrictMode>
 );
+
+
